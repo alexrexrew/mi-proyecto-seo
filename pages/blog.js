@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Link from "next/link";
+import { posts } from "../data/posts";
 
 export default function Blog() {
   return (
@@ -23,7 +25,13 @@ export default function Blog() {
       </Head>
 
       <h1>Blog</h1>
-      <p>Aquí publicaremos artículos sobre SEO y rendimiento en Next.js.</p>
+      <ul>
+        {posts.map((p) => (
+          <li key={p.slug}>
+            <Link href={`/blog/${p.slug}`}>{p.title}</Link>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
